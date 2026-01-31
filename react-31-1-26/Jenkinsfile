@@ -10,16 +10,6 @@ pipeline {
             }
         }
 
-        stage('Check Directory') {
-            steps {
-                dir('react-31-1-26') {
-                    sh 'pwd'
-                    sh 'ls -la'
-                    sh 'docker-compose --version'
-                }
-            }
-        }
-
         stage('Build Containers and Deploy Application') {
             steps {
                 dir('react-31-1-26') {
