@@ -8,15 +8,13 @@ pipeline {
             }
         }
 
-        stage('Build Containers') {
+        stage('Build Containers and Deploy Application') {
             steps {
-                sh 'docker-compose build'
-            }
-        }
-
-        stage('Deploy Application') {
-            steps {
-                sh 'docker-compose up -d'
+                // Navigate to the react-31-1-26 directory and build & deploy
+                dir('react-31-1-26') {
+                    sh 'docker-compose build'
+                    sh 'docker-compose up -d'
+                }
             }
         }
     }
