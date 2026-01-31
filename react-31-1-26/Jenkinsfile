@@ -4,13 +4,14 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/aitharoshankumar/festival.git'
+                git branch: 'roshan', 
+                    url: 'https://github.com/aitharoshankumar/festival.git', 
+                    credentialsId: 'github-creds'
             }
         }
 
         stage('Build Containers and Deploy Application') {
             steps {
-                // Navigate to the react-31-1-26 directory and build & deploy
                 dir('react-31-1-26') {
                     sh 'docker-compose build'
                     sh 'docker-compose up -d'
