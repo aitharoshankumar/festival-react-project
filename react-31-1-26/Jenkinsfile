@@ -13,8 +13,8 @@ pipeline {
         stage('Build Containers and Deploy Application') {
             steps {
                 dir('react-31-1-26') {
-                    sh 'docker-compose build'
-                    sh 'docker-compose up -d'
+                    sh 'docker compose build'
+                    sh 'docker compose up -d'
                 }
             }
         }
