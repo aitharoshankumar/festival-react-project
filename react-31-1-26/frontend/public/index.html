@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Top 10 Indian Festivals</title>
+</head>
+<body>
+  <h1>Top 10 Indian Festivals</h1>
+  <ul id="festivalList"></ul>
+
+  <script>
+    fetch("http://54.196.229.34:5000/api/festivals")
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById("festivalList");
+
+        data.forEach(festival => {
+          const li = document.createElement("li");
+          li.innerHTML = `<b>${festival.name}</b> (${festival.date})<br>${festival.description}<br><br>`;
+          list.appendChild(li);
+        });
+      })
+      .catch(err => console.error("Error:", err));
+  </script>
+</body>
+</html>
+
